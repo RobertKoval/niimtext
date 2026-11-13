@@ -1,0 +1,39 @@
+[project]
+name = "niimtext"
+version = "0.1.0"
+description = "Print text from stdin on a Niimbot label printer over Bluetooth LE: no vendor app, no cloud, nothing written to disk."
+readme = "README.md"
+license = "MIT"
+license-files = ["LICENSE", "THIRD_PARTY_NOTICES.md", "src/niimtext/fonts/OFL.txt"]
+requires-python = ">=3.11"
+dependencies = ["bleak>=0.22", "Pillow>=10.1"]
+keywords = ["niimbot", "label-printer", "bluetooth-le", "thermal-printer", "privacy"]
+classifiers = [
+    "Environment :: Console",
+    "Operating System :: MacOS",
+    "Operating System :: POSIX :: Linux",
+    "Programming Language :: Python :: 3",
+    "Topic :: Printing",
+]
+
+[project.urls]
+Repository = "https://github.com/RobertKoval/niimtext"
+
+[project.scripts]
+niimtext = "niimtext.cli:main"
+
+[dependency-groups]
+dev = ["pytest>=8", "ruff>=0.6"]
+
+[build-system]
+requires = ["hatchling>=1.26"]
+build-backend = "hatchling.build"
+
+[tool.ruff]
+line-length = 120
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "B", "UP"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
